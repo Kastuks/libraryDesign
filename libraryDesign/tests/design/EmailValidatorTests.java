@@ -17,23 +17,23 @@ class EmailValidatorTests {
 	}
 	@Test
 	void testIfEmailContainsAtSign() {
-		boolean isValid = emailValidator.validateEmail("name.surname.gmail.com");
+		boolean isValid = emailValidator.validateEmailAtSign("name.surname.gmail.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
 	void testIfEmailContainsIllegalSymbols() {
-		boolean isValid = emailValidator.validateEmail("name.s*/-@gmail.com");
+		boolean isValid = emailValidator.validateEmailSymbols("name.s*/-@gmail.com");
 		assertTrue(isValid);
 	}
 	@Test
 	void testIfEmailContainsCorrectDomain() {
-		boolean isValid = emailValidator.validateEmail("name.surname@gmai.com");
+		boolean isValid = emailValidator.validateEmailDomain("name.surname@gmai.com");
 		assertTrue(isValid);
 	}
 	@Test
 	void testIfEmailContainsCorrectTLD() {
-		boolean isValid = emailValidator.validateEmail("name.surname@gmail.co");
+		boolean isValid = emailValidator.validateEmailTLD("name.surname@gmail.co");
 		assertTrue(isValid);
 	}
 	

@@ -19,12 +19,12 @@ class PhoneValidatorTests {
 	
 	@Test
 	void testIfPhoneNumberContainsOnlyNumbers() {
-		boolean isValid = phoneValidator.validatePhoneNumber("86423479B");
+		boolean isValid = phoneValidator.validatePhoneNumberSymbols("86423479B");
 		assertTrue(isValid);
 	}
 	@Test
 	void testIfPhoneNumberIsNotEmpty() {
-		boolean isValid = phoneValidator.validatePhoneNumber("   ");
+		boolean isValid = phoneValidator.validatePhoneNumberNotEmpty("   ");
 		assertTrue(isValid);
 	}
 	@Test

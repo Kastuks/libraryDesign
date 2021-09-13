@@ -19,6 +19,16 @@ public class PhoneValidator {
 		return false;
 	}
 
+	public boolean validatePhoneNumberNotEmpty(String string) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean validatePhoneNumberSymbols(String string) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 
 }
