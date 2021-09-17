@@ -2,65 +2,79 @@ package design;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.*;
 import org.junit.jupiter.params.provider.*;
 
-class PasswordCheckerTests {
+class EmailValidatorTests {
 	
+	EmailValidator emailValidator;
 	
-	PasswordChecker passwordChecker;
 	@BeforeEach
 	void setUp() {
-		passwordChecker = new PasswordChecker();
+		emailValidator = new EmailValidator();;
+
 	}
 	
-	
 	@Test
-	void testPasswordIsNull_shouldReturnFalse() {
-		boolean isValid = passwordChecker.validatePasswordIsNull(null);
+	void testIfEmailIsEmpty_shouldReturnFalse() {
+		boolean isValid = emailValidator.validateEmail("");
 		assertTrue(isValid);
 	}
 	
 	@Test
-	void testPasswordIsEmpty_shouldReturnFalse() {
-		boolean isValid = passwordChecker.validatePasswordIsEmpty("");
-		assertTrue(isValid);
-	}
-	@Test
-	void testPasswordLength_shouldReturnFalse() {
-		boolean isValid = passwordChecker.validatePasswordLength(10, "qsdadsxsar12qwtr"); 
-		assertTrue(isValid);
-	}
-	@Test
-	void testPasswordLength_shouldReturnTrue() {
-		boolean isValid = passwordChecker.validatePasswordLength(10, "qr12qwtr"); 
+	void testIfEmailIsNull_shouldReturnFalse() {
+		boolean isValid = emailValidator.validateEmail(null);
 		assertTrue(isValid);
 	}
 	
 	
 	@Test
-	void testPasswordUpperCaseLetters_shouldReturnFalse() {
-		boolean isValid = passwordChecker.validatePasswordUpperCaseLetters("qr12qwtr");
+	void testIfEmailContainsAtSign_shouldReturnFalse() {
+		boolean isValid = emailValidator.validateEmail("name.surname.gmail.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
-	void testPasswordUpperCaseLetters_shouldReturnTrue() {
-		boolean isValid = passwordChecker.validatePasswordUpperCaseLetters("Qr12qwtr");
+	void testIfEmailContainsAtSign_shouldReturnTrue() {
+		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
-	void testPasswordSpecialSymbols_shouldReturnFalse() {
-		boolean isValid = passwordChecker.validatePasswordSpecialSymbols("qr12qwtr");
+	void testIfEmailContainsIllegalSymbols_shouldReturnFalse() {
+		boolean isValid = emailValidator.validateEmail("name.s¿@gmail.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
-	void testPasswordSpecialSymbols_shouldReturnTrue() {
-		boolean isValid = passwordChecker.validatePasswordSpecialSymbols("q.r12qwtr");
+	void testIfEmailContainsIllegalSymbols_shouldReturnTrue() {
+		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
 		assertTrue(isValid);
 	}
+	
+	@Test
+	void testIfEmailContainsCorrectDomain_shouldReturnFalse() {
+		boolean isValid = emailValidator.validateEmail("name.surname@gmai.com");
+		assertTrue(isValid);
+	}
+	
+	@Test
+	void testIfEmailContainsCorrectDomain_shouldReturnTrue() {
+		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
+		assertTrue(isValid);
+	}
+	
+	@Test
+	void testIfEmailContainsCorrectTLD_shouldReturnFalse() {
+		boolean isValid = emailValidator.validateEmail("name.surname@gmail.co");
+		assertTrue(isValid);
+	}
+	
+	@Test
+	void testIfEmailContainsCorrectTLD_shouldReturnTrue() {
+		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
+		assertTrue(isValid);
+	}
+	
 }
