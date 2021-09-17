@@ -31,49 +31,49 @@ class EmailValidatorTests {
 	
 	@Test
 	void testIfEmailContainsAtSign_shouldReturnFalse() {
-		boolean isValid = emailValidator.validateEmailAtSign("name.surname.gmail.com");
+		boolean isValid = emailValidator.validateEmail("name.surname.gmail.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
 	void testIfEmailContainsAtSign_shouldReturnTrue() {
-		boolean isValid = emailValidator.validateEmailAtSign("name.surname@gmail.com");
+		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
 	void testIfEmailContainsIllegalSymbols_shouldReturnFalse() {
-		boolean isValid = emailValidator.validateEmailSymbols("name.s*/-@gmail.com");
+		boolean isValid = emailValidator.validateEmail("name.s¿@gmail.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
 	void testIfEmailContainsIllegalSymbols_shouldReturnTrue() {
-		boolean isValid = emailValidator.validateEmailSymbols("name.surname@gmail.com");
+		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
 	void testIfEmailContainsCorrectDomain_shouldReturnFalse() {
-		boolean isValid = emailValidator.validateEmailDomain("name.surname@gmai.com");
+		boolean isValid = emailValidator.validateEmail("name.surname@gmai.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
 	void testIfEmailContainsCorrectDomain_shouldReturnTrue() {
-		boolean isValid = emailValidator.validateEmailDomain("name.surname@gmail.com");
+		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
 	void testIfEmailContainsCorrectTLD_shouldReturnFalse() {
-		boolean isValid = emailValidator.validateEmailTLD("name.surname@gmail.co");
+		boolean isValid = emailValidator.validateEmail("name.surname@gmail.co");
 		assertTrue(isValid);
 	}
 	
 	@Test
 	void testIfEmailContainsCorrectTLD_shouldReturnTrue() {
-		boolean isValid = emailValidator.validateEmailTLD("name.surname@gmail.com");
+		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
 		assertTrue(isValid);
 	}
 	
