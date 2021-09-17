@@ -15,25 +15,65 @@ class EmailValidatorTests {
 		emailValidator = new EmailValidator();;
 
 	}
+	
 	@Test
-	void testIfEmailContainsAtSign() {
+	void testIfEmailIsEmpty_shouldReturnFalse() {
+		boolean isValid = emailValidator.validateEmail("");
+		assertTrue(isValid);
+	}
+	
+	@Test
+	void testIfEmailIsNull_shouldReturnFalse() {
+		boolean isValid = emailValidator.validateEmail(null);
+		assertTrue(isValid);
+	}
+	
+	
+	@Test
+	void testIfEmailContainsAtSign_shouldReturnFalse() {
 		boolean isValid = emailValidator.validateEmailAtSign("name.surname.gmail.com");
 		assertTrue(isValid);
 	}
 	
 	@Test
-	void testIfEmailContainsIllegalSymbols() {
+	void testIfEmailContainsAtSign_shouldReturnTrue() {
+		boolean isValid = emailValidator.validateEmailAtSign("name.surname@gmail.com");
+		assertTrue(isValid);
+	}
+	
+	@Test
+	void testIfEmailContainsIllegalSymbols_shouldReturnFalse() {
 		boolean isValid = emailValidator.validateEmailSymbols("name.s*/-@gmail.com");
 		assertTrue(isValid);
 	}
+	
 	@Test
-	void testIfEmailContainsCorrectDomain() {
+	void testIfEmailContainsIllegalSymbols_shouldReturnTrue() {
+		boolean isValid = emailValidator.validateEmailSymbols("name.surname@gmail.com");
+		assertTrue(isValid);
+	}
+	
+	@Test
+	void testIfEmailContainsCorrectDomain_shouldReturnFalse() {
 		boolean isValid = emailValidator.validateEmailDomain("name.surname@gmai.com");
 		assertTrue(isValid);
 	}
+	
 	@Test
-	void testIfEmailContainsCorrectTLD() {
+	void testIfEmailContainsCorrectDomain_shouldReturnTrue() {
+		boolean isValid = emailValidator.validateEmailDomain("name.surname@gmail.com");
+		assertTrue(isValid);
+	}
+	
+	@Test
+	void testIfEmailContainsCorrectTLD_shouldReturnFalse() {
 		boolean isValid = emailValidator.validateEmailTLD("name.surname@gmail.co");
+		assertTrue(isValid);
+	}
+	
+	@Test
+	void testIfEmailContainsCorrectTLD_shouldReturnTrue() {
+		boolean isValid = emailValidator.validateEmailTLD("name.surname@gmail.com");
 		assertTrue(isValid);
 	}
 	
