@@ -16,6 +16,23 @@ class PhoneValidatorTests {
 		phoneValidator = new PhoneValidator();
 
 	}
+	@Test
+	void testIfPhoneNumberIsCorrect_shouldReturnTrue() {
+		boolean isValid = phoneValidator.validatePhoneNumber("+37065134987");
+		assertTrue(isValid);
+	}
+	
+	@Test
+	void testIfPhoneNumberWithoutPlusIsCorrect_shouldReturnTrue() {
+		boolean isValid = phoneValidator.validatePhoneNumber("865134987");
+		assertTrue(isValid);
+	}
+	
+	@Test
+	void testIfOtherCountryPhoneNumberIsCorrect_shouldReturnTrue() {
+		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber("+37165134987");
+		assertTrue(isValid);
+	}
 	
 	@Test
 	void testIfPhoneNumberIsNotEmpty_shouldReturnFalse() {
@@ -36,33 +53,9 @@ class PhoneValidatorTests {
 	}
 	
 	@Test
-	void testIfPhoneNumberContainsOnlyNumbers_shouldReturnTrue() {
-		boolean isValid = phoneValidator.validatePhoneNumber("+37064234793");
-		assertTrue(isValid);
-	}
-	
-	
-//	@Test
-//	void testIfPhoneNumberPrefixChangesCorrectly_shouldReturnTrue() {
-//		boolean isValid = phoneValidator.validatePhoneNumberPrefix("864234958");
-//		assertTrue(isValid);
-//	}
-	
-	@Test
-	void testIfPhoneNumberCountryIsCorrect_shouldReturnFalse() {
-		boolean isValid = phoneValidator.validatePhoneNumber("LT", "+37168843942");
-		assertTrue(isValid);
-	}
-	
-	@Test
-	void testIfPhoneNumberCountryIsCorrect_shouldReturnTrue() {
-		boolean isValid = phoneValidator.validatePhoneNumber("LT", "+37068843942");
-		assertTrue(isValid);
-	}
-	
-	@Test
 	void testIfPhoneNumberIsTooLong_shouldReturnFalse() {
-		boolean isValid = phoneValidator.validatePhoneNumber("+3706884394242");
+		int minLength = 8;
+		boolean isValid = phoneValidator.validatePhoneNumber("+3706884394242", minLength);
 		assertTrue(isValid);
 	}
 	
@@ -73,40 +66,32 @@ class PhoneValidatorTests {
 	}
 	
 	@Test
+	void testIfPhoneNumberCountryIsCorrect_shouldReturnFalse() {
+		String country = "LT";
+		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber(country, "+37168843942");
+		assertTrue(isValid);
+	}
+	
+	@Test
 	void testIfOtherCountryPhoneNumberContainsOnlyNumbers_shouldReturnFalse() {
-		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber("+402134793427B");
-		assertTrue(isValid);
-	}
-	
-	@Test
-	void testIfOtherCountryPhoneNumberContainsOnlyNumbers_shouldReturnTrue() {
-		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber("+402134793598");
-		assertTrue(isValid);
-	}
-	
-	@Test
-	void testIfOtherCountryPhoneNumberCountryIsCorrect_shouldReturnFalse() {
-		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber("LV", "+37168843942");
-		assertTrue(isValid);
-	}
-	
-	@Test
-	void testIfOtherCountryPhoneNumberCountryIsCorrect_shouldReturnTrue() {
-		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber("LV", "+37168843942");
+		String country = "RO";
+		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber(country, "+402134793427B");
 		assertTrue(isValid);
 	}
 	
 	@Test
 	void testIfOtherCountryPhoneNumberIsTooLong_shouldReturnFalse() {
-		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber("+371688439234242");
+		String country = "LV";
+		int minLength = 8;
+		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber(country, "+371688439234242", minLength);
 		assertTrue(isValid);
 	}
 	
 	@Test
 	void testIfOtherCountryPhoneNumberIsTooShort_shouldReturnFalse() {
-		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber("+37164242");
+		String country = "LV";
+		boolean isValid = phoneValidator.validateOtherCountryPhoneNumber(country, "+37164242");
 		assertTrue(isValid);
 	}
 	
-
 }
