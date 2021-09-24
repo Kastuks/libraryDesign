@@ -17,6 +17,12 @@ class EmailValidatorTests {
 	}
 	
 	@Test
+	void testIfEmailIsCorrect_shouldReturnTrue() {
+		boolean isValid = emailValidator.validateEmail("vardenis@gmail.com");
+		assertTrue(isValid);
+	}
+	
+	@Test
 	void testIfEmailIsEmpty_shouldReturnFalse() {
 		boolean isValid = emailValidator.validateEmail("");
 		assertTrue(isValid);
@@ -36,20 +42,8 @@ class EmailValidatorTests {
 	}
 	
 	@Test
-	void testIfEmailContainsAtSign_shouldReturnTrue() {
-		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
-		assertTrue(isValid);
-	}
-	
-	@Test
 	void testIfEmailContainsIllegalSymbols_shouldReturnFalse() {
 		boolean isValid = emailValidator.validateEmail("name.s¿@gmail.com");
-		assertTrue(isValid);
-	}
-	
-	@Test
-	void testIfEmailContainsIllegalSymbols_shouldReturnTrue() {
-		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
 		assertTrue(isValid);
 	}
 	
@@ -60,20 +54,8 @@ class EmailValidatorTests {
 	}
 	
 	@Test
-	void testIfEmailContainsCorrectDomain_shouldReturnTrue() {
-		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
-		assertTrue(isValid);
-	}
-	
-	@Test
 	void testIfEmailContainsCorrectTLD_shouldReturnFalse() {
 		boolean isValid = emailValidator.validateEmail("name.surname@gmail.co");
-		assertTrue(isValid);
-	}
-	
-	@Test
-	void testIfEmailContainsCorrectTLD_shouldReturnTrue() {
-		boolean isValid = emailValidator.validateEmail("name.surname@gmail.com");
 		assertTrue(isValid);
 	}
 	
