@@ -8,10 +8,10 @@
 		<version>2.5.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.prekes.web</groupId>
-	<artifactId>prekes-web</artifactId>
+	<groupId>com.example</groupId>
+	<artifactId>3rd_assignment</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>prekes-web</name>
+	<name>3rd_assignment</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>11</java.version>

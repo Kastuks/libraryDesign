@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
+	<classpathentry kind="lib" path="C:/Users/Kestas/OneDrive/Stalinis kompiuteris/3KURSAS/PS_Projektavimas_Java/libraryDesign/libraryDesign/3rd_assignment/PSP.jar"/>
 	<classpathentry kind="output" path="PSP(ddovile)/bin"/>
 </classpath>
